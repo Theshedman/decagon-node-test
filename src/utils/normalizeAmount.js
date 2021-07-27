@@ -4,7 +4,7 @@
  */
 
 /**
- * Normalize amount
+ * Normalize trip bills
  * @param { string } amount - trip amount
  * @return { number }
  */
