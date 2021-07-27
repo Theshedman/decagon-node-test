@@ -26,7 +26,7 @@ describe('analysis spec', () => {
         totalAmountEarned: expect.any(Number),
       },
     });
-  });
+  }, 30000);
 
   test('analysis solution', () => {
     return expect(analysis()).resolves.toEqual({
@@ -51,7 +51,7 @@ describe('analysis spec', () => {
         totalAmountEarned: 24508.77,
       },
     });
-  });
+  }, 30000);
 });
 
 describe('driver report', () => {
