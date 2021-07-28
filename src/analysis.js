@@ -13,9 +13,9 @@ async function analysis() {
     const trips = await getTrips();
     const noOfCashTrips = Analytics.calculateNumberOfTrips(trips, true);
     const noOfNonCashTrips = Analytics.calculateNumberOfTrips(trips, false);
-    const cashBilledTotal = Analytics.calculateBills(trips, false, true);
-    const nonCashBilledTotal = Analytics.calculateBills(trips, false, false);
-    const billedTotal = Analytics.calculateBills(trips, true);
+    const cashBilledTotal = Analytics.calculateBills(trips, true);
+    const nonCashBilledTotal = Analytics.calculateBills(trips, false);
+    const billedTotal = cashBilledTotal + nonCashBilledTotal;
     const noOfDriversWithMoreThanOneVehicle = await Analytics.getDriversWithMoreVehicles(trips, getDriver);
     const mostTripsByDriver = await Analytics.getDriverWithMostTrip(trips, getDriver);
     const highestEarningDriver = await Analytics.getHighestEarningDriver(trips, getDriver);
@@ -35,7 +35,5 @@ async function analysis() {
       throw new Error(e.message);
   }
 }
-
-analysis().then(e => console.log(e))
 
 module.exports = analysis;
