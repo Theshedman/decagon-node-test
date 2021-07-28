@@ -1,8 +1,6 @@
 const { getTrips, getDriver } = require('api');
 const { Analytics } = require('./utils');
 
-// const { groupTripsByDriverId, getDriverWithMostTrip } = new Analytics();
-
 /**
  * This function should return the trip data analysis
  *
