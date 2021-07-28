@@ -15,7 +15,6 @@ const normalizeAmount = require('./normalizeAmount.js');
 class AnalyticsUtilities {
   /**
    * Group driver trips
-   * @private
    * @param { array } trips - all trips data
    * @return { Map }
    */
@@ -83,11 +82,10 @@ class AnalyticsUtilities {
    * Calculate bills for trips
    * @param { array } trips - all trips
    * @param { boolean } isCashTrip - type of the trip to calculate
-   * @param { boolean } allBills - calculate bill for all trips
    * whether cash or not
    * @return { number }
    */
-  static calculateBills(trips, allBills, isCashTrip = false) {
+  static calculateBills(trips, isCashTrip) {
     // Default value when there's no trip data
     if (!trips || trips.length === 0) {
       return 0;
@@ -95,15 +93,6 @@ class AnalyticsUtilities {
 
     // Avoid modifying the input data directly by creating a copy
     const tripCopy = JSON.parse(JSON.stringify(trips));
-
-    // Calculate the total bills for all trips
-    if (allBills) {
-      return tripCopy.reduce((accumulator, currentValue) => {
-        accumulator += normalizeAmount(currentValue['billedAmount']);
-
-        return accumulator;
-      }, 0);
-    }
 
     // Calculate the total bills for trip type
     return tripCopy.reduce((accumulator, currentValue) => {
