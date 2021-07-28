@@ -50,7 +50,7 @@ class AnalyticsUtilities {
       totalAmountEarned += tripAmount;
     }
 
-    return totalAmountEarned;
+    return Number(totalAmountEarned.toFixed(2));
   }
 
   /**
@@ -101,7 +101,7 @@ class AnalyticsUtilities {
         accumulator += normalizeAmount(currentValue['billedAmount']);
       }
 
-      return accumulator;
+      return Number(accumulator.toFixed(2));
     }, 0);
   }
 
