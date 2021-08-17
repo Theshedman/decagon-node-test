@@ -28,9 +28,9 @@ async function driverReport() {
       const noOfTrips = driverTrip.length;
       let driverDetails;
 
-      // Handle invalid id
-      if (driverId !== '7ba0dc7ba0dce0-1de3-4971-82e0-a10acce52dd2') {
+      try {
         driverDetails = await getDriver(driverId);
+
         driverData.fullName = driverDetails.name;
         driverData.id = driverId;
         driverData.phone = driverDetails.phone;
@@ -42,7 +42,7 @@ async function driverReport() {
             manufacturer: vehicle.manufacturer,
           });
         }
-      } else {
+      } catch (e) {
         driverData.id = driverId;
       }
 

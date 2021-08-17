@@ -226,13 +226,15 @@ class AnalyticsUtilities {
       // Check for driver with the highest trips
       for (let driverId of driverTrips.keys()) {
         const driverID = driverId;
+        let driverDetails;
 
-        // Skip invalid uuid
-        if (driverID === '7ba0dc7ba0dce0-1de3-4971-82e0-a10acce52dd2') {
+        try {
+           driverDetails = await getDriver(driverID);
+        } catch (e) {
           continue;
         }
 
-        const driverDetails = await getDriver(driverID);
+
         const driverVehicles = driverDetails['vehicleID'];
 
 
